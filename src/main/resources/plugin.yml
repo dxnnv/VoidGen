@@ -4,5 +4,5 @@ main: '${group}.${name}'
 api-version: 1.13
 load: STARTUP
 loadbefore: [ Multiverse-Core, Multiworld ]
-author: '${author}'
+author: [ '${author}', PadowYT2 ]
 website: '${website}'
