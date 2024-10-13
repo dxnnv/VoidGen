@@ -1,6 +1,7 @@
 package de.xtkq.voidgen.generator.interfaces;
 
 import de.xtkq.voidgen.generator.settings.ChunkGenSettings;
+
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.World;
@@ -11,7 +12,6 @@ import org.bukkit.plugin.java.JavaPlugin;
 import java.util.Random;
 
 public abstract class ChunkGen extends ChunkGenerator {
-
     protected ChunkGenSettings chunkGenSettings;
     protected JavaPlugin javaPlugin;
 
@@ -71,7 +71,8 @@ public abstract class ChunkGen extends ChunkGenerator {
     }
 
     @Override
-    public void generateBedrock(WorldInfo worldInfo, Random random, int chunkX, int chunkZ, ChunkData chunkData) {
+    public void generateBedrock(
+            WorldInfo worldInfo, Random random, int chunkX, int chunkZ, ChunkData chunkData) {
         // Bedrock block position
         final int x = 0, y = 64, z = 0;
 

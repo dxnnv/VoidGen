@@ -1,10 +1,10 @@
 package de.xtkq.voidgen.generator.settings;
 
 import com.google.gson.annotations.SerializedName;
+
 import org.bukkit.block.Biome;
 
 public class ChunkGenSettings {
-
     @SerializedName("biome")
     private Biome biome = null;
 

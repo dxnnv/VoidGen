@@ -2,11 +2,10 @@ package de.xtkq.voidgen.generator.instances;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonSyntaxException;
-import de.xtkq.voidgen.VoidGen;
-import de.xtkq.voidgen.generator.annotations.VoidChunkGenInfo;
+
 import de.xtkq.voidgen.generator.interfaces.ChunkGen;
 import de.xtkq.voidgen.generator.settings.ChunkGenSettings;
-import org.apache.commons.lang.StringUtils;
+
 import org.bukkit.block.Biome;
 import org.bukkit.generator.BiomeProvider;
 import org.bukkit.generator.WorldInfo;
@@ -16,22 +15,27 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 
-@VoidChunkGenInfo(versions = {"1.17.1", "1.18", "1.18.1"})
-public class VoidChunkGen_1_17_1 extends ChunkGen {
-
-    public VoidChunkGen_1_17_1(JavaPlugin javaPlugin, String paramIdentifier) {
+public class VoidChunkGen extends ChunkGen {
+    public VoidChunkGen(JavaPlugin javaPlugin, String paramIdentifier) {
         super(javaPlugin);
         Gson gson = new Gson();
 
-        if (StringUtils.isBlank(paramIdentifier)) {
+        if (paramIdentifier == null || paramIdentifier.trim().isEmpty()) {
             this.chunkGenSettings = new ChunkGenSettings();
-            this.javaPlugin.getLogger().info("Generator settings have not been set. Using default values:");
+            this.javaPlugin
+                    .getLogger()
+                    .info("Generator settings have not been set. Using default values:");
         } else {
             try {
                 this.chunkGenSettings = gson.fromJson(paramIdentifier, ChunkGenSettings.class);
             } catch (JsonSyntaxException jse) {
                 this.chunkGenSettings = new ChunkGenSettings();
-                this.javaPlugin.getLogger().info("Generator settings \"" + paramIdentifier + "\" syntax is not valid. Using default values:");
+                this.javaPlugin
+                        .getLogger()
+                        .info(
+                                "Generator settings \""
+                                        + paramIdentifier
+                                        + "\" syntax is not valid. Using default values:");
             }
         }
         // Posting the currently used chunkGenSettings to console.
