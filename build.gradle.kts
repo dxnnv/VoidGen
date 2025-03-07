@@ -2,8 +2,7 @@ plugins {
     java
 }
 
-group = project.properties["plugin_group"] as String
-version = project.properties["plugin_version"] as String
+version = "2.3.0"
 
 java {
     sourceCompatibility = JavaVersion.toVersion(21)
@@ -15,7 +14,7 @@ java {
 repositories {
     mavenLocal()
     mavenCentral()
-    maven("https://papermc.io/repo/repository/maven-public/")
+    maven("https://repo.papermc.io/repository/maven-public/")
 }
 
 dependencies {
@@ -25,15 +24,7 @@ dependencies {
 tasks {
     processResources {
         filesMatching("plugin.yml") {
-            expand(
-                mapOf(
-                    "version" to project.properties["plugin_version"],
-                    "name" to project.properties["plugin_name"],
-                    "group" to project.properties["plugin_group"],
-                    "website" to project.properties["plugin_website"],
-                    "author" to project.properties["plugin_author"]
-                )
-            )
+            expand(mapOf("version" to version))
         }
     }
 }
